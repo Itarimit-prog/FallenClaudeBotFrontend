@@ -1,5 +1,6 @@
 .idea/
 .proxyai/
+
 node_modules/
 dist/
 *.vue.js
