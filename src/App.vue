@@ -60,5 +60,6 @@ const tabs = computed(() => {
 <style>
 .page-enter-active { animation: slideUp 0.3s cubic-bezier(0.16,1,0.3,1); }
 .page-leave-active { animation: fadeOut 0.15s ease; }
+@keyframes slideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes fadeOut { to { opacity: 0; transform: translateY(-8px); } }
 </style>
