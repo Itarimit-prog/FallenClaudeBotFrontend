@@ -74,6 +74,11 @@
     animation: shimmer 1.6s linear infinite;
   }
 
+  @keyframes shimmer {
+    from { background-position: -200% 0; }
+    to { background-position: 200% 0; }
+  }
+
   .status-new       { @apply bg-blue-500/15 text-blue-400 badge; }
   .status-confirmed { @apply bg-violet-500/15 text-violet-400 badge; }
   .status-done      { @apply bg-indigo-500/15 text-indigo-300 badge; }
