@@ -27,7 +27,6 @@ export interface Product {
   name: string
   subsubcategory_id: string
   image_url: string
-  in_stock: boolean
   stock: number
   sort_order: number
 }
@@ -66,6 +65,16 @@ export interface UserProfile {
   referral_credits_used: number
   referral_credits_earned: number
   referrals: ReferralInfo[]
+}
+
+export interface UserSummary {
+  tg_user_id: number
+  username: string
+  first_name: string
+  reg_date: string
+  referred_by: string
+  referral_credits_used: number
+  referral_credits_earned: number
 }
 
 export interface DiscountCheckResult {

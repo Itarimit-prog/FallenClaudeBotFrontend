@@ -30,6 +30,8 @@
       <AdminContentList v-else-if="activeTab === 'arrivals'" type="arrivals" title="Поступления" />
       <!-- SCHEDULE -->
       <AdminSchedule v-else-if="activeTab === 'schedule'" />
+      <!-- USERS -->
+      <AdminUsers v-else-if="activeTab === 'users'" />
     </div>
   </div>
 </template>
@@ -39,6 +41,7 @@ import { ref } from 'vue'
 import AdminOrders from '@/components/admin/AdminOrders.vue'
 import AdminContentList from '@/components/admin/AdminContentList.vue'
 import AdminSchedule from '@/components/admin/AdminSchedule.vue'
+import AdminUsers from '@/components/admin/AdminUsers.vue'
 
 const activeTab = ref('orders')
 const adminTabs = [
@@ -47,5 +50,6 @@ const adminTabs = [
   { id: 'discounts', label: 'Скидки' },
   { id: 'arrivals',  label: 'Поступления' },
   { id: 'schedule',  label: 'График' },
+  { id: 'users',     label: 'Пользователи' },
 ]
 </script>

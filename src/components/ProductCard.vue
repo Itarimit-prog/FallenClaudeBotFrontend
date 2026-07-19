@@ -9,7 +9,7 @@
           <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
         </svg>
       </div>
-      <div v-if="!product.in_stock" class="absolute inset-0 bg-surface/70 flex items-center justify-center">
+      <div v-if="product.stock === 0" class="absolute inset-0 bg-surface/70 flex items-center justify-center">
         <span class="badge bg-red-500/20 text-red-400 text-xs">Нет в наличии</span>
       </div>
     </div>
@@ -20,7 +20,7 @@
           <BynIcon :size="14" class="text-indigo-400 flex-shrink-0" />
           <span class="font-display text-indigo-400 font-semibold text-l">{{ formatPrice(price) }}</span>
         </div>
-        <button v-if="product.in_stock"
+        <button v-if="product.stock > 0"
           class="w-8 h-8 rounded-xl bg-indigo-500/20 hover:bg-indigo-500 text-indigo-400 hover:text-white transition-all duration-150 flex items-center justify-center active:scale-90"
           @click.prevent="onAdd">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>

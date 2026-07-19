@@ -39,14 +39,14 @@
           <div class="flex items-center gap-2 mt-2 flex-wrap">
             <span v-if="ssub?.strength" class="badge bg-violet-500/15 text-violet-300">{{ ssub.strength }}</span>
             <span v-if="ssub" class="badge bg-surface-muted text-slate-400">{{ ssub.name }}</span>
-            <span v-if="product.in_stock && product.stock > 0" class="badge bg-indigo-500/15 text-indigo-400">В наличии</span>
+            <span v-if="product.stock > 0" class="badge bg-indigo-500/15 text-indigo-400">В наличии</span>
             <span v-else class="badge bg-red-500/15 text-red-400">Нет в наличии</span>
             <span v-if="product.stock > 0 && product.stock <= 5"
               class="badge bg-amber-500/15 text-amber-400">Осталось {{ product.stock }} шт</span>
           </div>
         </div>
 
-        <div v-if="product.in_stock && product.stock > 0">
+        <div v-if="product.stock > 0">
           <div v-if="inCart" class="flex items-center gap-3">
             <div class="flex items-center gap-3 card p-1 flex-1">
               <button class="w-9 h-9 rounded-xl bg-surface-muted flex items-center justify-center active:scale-90 transition-transform"

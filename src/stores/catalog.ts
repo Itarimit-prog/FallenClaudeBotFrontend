@@ -52,7 +52,7 @@ export const useCatalogStore = defineStore('catalog', () => {
    * Проверяет наличие товара в наличии
    */
   function isInStock(product: Product): boolean {
-    return product.in_stock && product.stock > 0
+    return product.stock > 0
   }
 
   /**

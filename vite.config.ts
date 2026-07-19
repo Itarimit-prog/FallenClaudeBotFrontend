@@ -8,8 +8,8 @@ export default defineConfig({
     alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) }
   },
   build: {
-    target: 'es2015',
-    cssTarget: 'chrome61',
+    target: 'es2020',
+    cssTarget: 'chrome90',
   },
   server: {
     proxy: {

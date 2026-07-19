@@ -10,7 +10,7 @@
         </svg>
       </div>
       <!-- Нет в наличии -->
-      <div v-if="!product.in_stock || product.stock === 0"
+      <div v-if="product.stock === 0"
         class="absolute inset-0 bg-surface/70 flex items-center justify-center">
         <span class="text-[10px] font-semibold text-red-400 bg-red-500/20 px-2 py-0.5 rounded-full">Нет</span>
       </div>
@@ -52,7 +52,7 @@ const { haptic } = useTelegram()
 const inCartQty = computed(() =>
   cart.items.find(i => i.product.id === props.product.id)?.quantity ?? 0
 )
-const canAdd = computed(() => props.product.in_stock && props.product.stock > 0)
+const canAdd = computed(() => props.product.stock > 0)
 
 function onAdd() {
   if (inCartQty.value >= props.product.stock) return

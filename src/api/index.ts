@@ -2,7 +2,7 @@ import http from './http'
 import type {
   Product, Category, SubCategory, SubSubCategory,
   Order, OrderStatus, NewsItem, Discount, DiscountCheckResult,
-  Arrival, ScheduleDay, AvailableDay, UserProfile
+  Arrival, ScheduleDay, AvailableDay, UserProfile, UserSummary
 } from '@/types'
 
 export const productsApi = {
@@ -58,4 +58,5 @@ export const scheduleApi = {
 
 export const usersApi = {
   getMe: () => http.get<UserProfile>('/users/me').then(r => r.data),
+  getAllAdmin: () => http.get<UserSummary[]>('/admin/users').then(r => r.data),
 }
