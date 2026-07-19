@@ -1,19 +1,26 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import http from '@/api/http'
+import HomePage from '@/pages/HomePage.vue'
+import CatalogPage from '@/pages/CatalogPage.vue'
+import ProductPage from '@/pages/ProductPage.vue'
+import CartPage from '@/pages/CartPage.vue'
+import ProfilePage from '@/pages/ProfilePage.vue'
+import ContactsPage from '@/pages/ContactsPage.vue'
+import AdminPage from '@/pages/AdminPage.vue'
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes: [
-    { path: '/',         name: 'home',     component: () => import('@/pages/HomePage.vue') },
-    { path: '/catalog',  name: 'catalog',  component: () => import('@/pages/CatalogPage.vue') },
-    { path: '/catalog/:id', name: 'product', component: () => import('@/pages/ProductPage.vue') },
-    { path: '/cart',     name: 'cart',     component: () => import('@/pages/CartPage.vue') },
-    { path: '/profile',  name: 'profile',  component: () => import('@/pages/ProfilePage.vue') },
-    { path: '/contacts', name: 'contacts', component: () => import('@/pages/ContactsPage.vue') },
+    { path: '/',         name: 'home',     component: HomePage },
+    { path: '/catalog',  name: 'catalog',  component: CatalogPage },
+    { path: '/catalog/:id', name: 'product', component: ProductPage },
+    { path: '/cart',     name: 'cart',     component: CartPage },
+    { path: '/profile',  name: 'profile',  component: ProfilePage },
+    { path: '/contacts', name: 'contacts', component: ContactsPage },
     {
       path: '/admin',
       name: 'admin',
-      component: () => import('@/pages/AdminPage.vue'),
+      component: AdminPage,
       beforeEnter: async () => {
         try {
           const { data } = await http.get<{ admin: boolean }>('/admin/me')

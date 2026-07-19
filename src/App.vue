@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col min-h-dvh">
     <!-- Экран загрузки -->
-    <Preloader />
+    <Preloader :visible="loading" />
 
     <main class="flex-1 overflow-y-auto overscroll-y-contain pb-[calc(var(--nav-h)+var(--tg-safe-bottom))]">
       <KeepAlive>
@@ -23,18 +23,25 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useTelegram } from '@/composables/useTelegram'
 import { useCartStore } from '@/stores/cart'
+import { useCatalogStore } from '@/stores/catalog'
 import NavTab from '@/components/NavTab.vue'
 import Preloader from '@/components/Preloader.vue'
 
 const { ready, isAdmin } = useTelegram()
 const cart = useCartStore()
+const catalog = useCatalogStore()
+const loading = ref(true)
 
 onMounted(async () => {
   ready()
-  await cart.hydrate()
+  // Каталог и корзина грузятся сразу при старте — все страницы уже в
+  // основном бандле (см. router.ts), так что после скрытия прелоадера
+  // переключение между вкладками ничего не подгружает заново.
+  await Promise.all([cart.hydrate(), catalog.loadCatalog()])
+  loading.value = false
 })
 
 const tabs = computed(() => {
